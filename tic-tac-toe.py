@@ -14,9 +14,9 @@ def play_game(squares):
     end_game = False
 
     while end_game == False:
-        valid_choice = False
         display_board(squares)
-        
+
+        valid_choice = False
         while valid_choice == False:
             choice = input('It\'s X\'s turn to choose a square(1-9).\n> ')
             if choice == 'X' or choice == '0':
@@ -33,6 +33,26 @@ def play_game(squares):
         squares[squares.index(choice)] = 'X'
         end_game = check_win(squares, turn='X')
 
+        if end_game == False:
+            display_board(squares)
+
+            valid_choice = False
+            while valid_choice == False:
+                choice = input('It\'s O\'s turn to choose a square(1-9).\n> ')
+                if choice == 'X' or choice == '0':
+                    print('\nYou didn\'t enter a valid number.\n'
+                    'Please enter a valid number(1-9) that isn\'t already taken.\n')
+                    valid_choice = False 
+                elif choice in squares:
+                    valid_choice = True
+                else:
+                    print('\nYou didn\'t enter a valid number.\n'
+                    'Please enter a valid number(1-9) that isn\'t already taken.\n')
+                    valid_choice = False
+            
+            squares[squares.index(choice)] = 'O'
+            end_game = check_win(squares, turn='O')
+
 
 def check_win(squares, turn):
     if turn == 'X':
@@ -46,10 +66,30 @@ def check_win(squares, turn):
         (squares[0] == 'X' and squares[4] == 'X' and squares[8] == 'X') or \
         (squares[6] == 'X' and squares[4] == 'X' and squares[2] == 'X'):
             display_board(squares)
-            print('X wins!\nThanks for playing!\n')
+            print('X wins!\nGood game. Thanks for playing!\n')
             return True
         else:
             return False
+
+    elif turn == 'O':
+        if \
+        (squares[0] == 'O' and squares[1] == 'O' and squares[2] == 'O') or \
+        (squares[3] == 'O' and squares[4] == 'O' and squares[5] == 'O') or \
+        (squares[6] == 'O' and squares[7] == 'O' and squares[8] == 'O') or \
+        (squares[0] == 'O' and squares[3] == 'O' and squares[6] == 'O') or \
+        (squares[1] == 'O' and squares[4] == 'O' and squares[7] == 'O') or \
+        (squares[2] == 'O' and squares[5] == 'O' and squares[8] == 'O') or \
+        (squares[0] == 'O' and squares[4] == 'O' and squares[8] == 'O') or \
+        (squares[6] == 'O' and squares[4] == 'O' and squares[2] == 'O'):
+            display_board(squares)
+            print('O wins!\nGood game. Thanks for playing!\n')
+            return True
+        else:
+            return False
+    
+    else:
+        print('\nInvalid value for turn\n')
+        return True
 
 
 def display_board(squares):
