@@ -68,8 +68,20 @@ def check_win(squares, turn):
             display_board(squares)
             print('X wins!\nGood game. Thanks for playing!\n')
             return True
+
         else:
-            return False
+            filled_squares = 0
+            for i in squares:
+                if i == 'X' or i == 'O':
+                    filled_squares += 1
+            
+            if filled_squares == 9:
+                display_board(squares)
+                print('Draw!\nGood game. Thanks for playing!\n')
+                return True
+            else:
+                return False
+
 
     elif turn == 'O':
         if \
@@ -84,8 +96,19 @@ def check_win(squares, turn):
             display_board(squares)
             print('O wins!\nGood game. Thanks for playing!\n')
             return True
+
         else:
-            return False
+            filled_squares = 0
+            for i in squares:
+                if i == 'X' or i == 'O':
+                    filled_squares += 1
+            
+            if filled_squares == 9:
+                display_board(squares)
+                print('Draw!\nGood game. Thanks for playing!\n')
+                return True
+            else:
+                return False
     
     else:
         print('\nInvalid value for turn\n')
