@@ -35,13 +35,15 @@ def play_game(squares):
         while valid_choice == False:
             choice = input('It\'s X\'s turn to choose a square(1-9).\n> ')
             if choice == 'X' or choice == '0':
-                print('\nYou didn\'t enter a valid number.\n'
+                display_board(squares)
+                print('You didn\'t enter a valid number.\n'
                 'Please enter a valid number(1-9) that isn\'t already taken.\n')
                 valid_choice = False 
             elif choice in squares:
                 valid_choice = True
             else:
-                print('\nYou didn\'t enter a valid number.\n'
+                display_board(squares)
+                print('You didn\'t enter a valid number.\n'
                 'Please enter a valid number(1-9) that isn\'t already taken.\n')
                 valid_choice = False
 
@@ -55,13 +57,15 @@ def play_game(squares):
             while valid_choice == False:
                 choice = input('It\'s O\'s turn to choose a square(1-9).\n> ')
                 if choice == 'X' or choice == '0':
-                    print('\nYou didn\'t enter a valid number.\n'
+                    display_board(squares)
+                    print('You didn\'t enter a valid number.\n'
                     'Please enter a valid number(1-9) that isn\'t already taken.\n')
                     valid_choice = False 
                 elif choice in squares:
                     valid_choice = True
                 else:
-                    print('\nYou didn\'t enter a valid number.\n'
+                    display_board(squares)
+                    print('You didn\'t enter a valid number.\n'
                     'Please enter a valid number(1-9) that isn\'t already taken.\n')
                     valid_choice = False
             
