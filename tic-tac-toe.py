@@ -1,16 +1,31 @@
 """
-Assignment: W02 Prove: Developer - Solo Code Submission
+Assignment: 
+    BYU-I, 2022 Spring Semester, Week 2
+    CSE 210: W02 Prove: Developer - Solo Code Submission
 Author: Seth Godoy
-Purpose: Create a TUI(text-based user interface) to play Tic-Tac-Toe
+Purpose: Create a Tic-Tac-Toe game to play in a terminal
 """
 
 
 def main():
+    print('\n---- Tic-Tac-Toe ----')
+    print('\nLet the game begin!')
     squares = create_squares()
     play_game(squares)
 
 
 def play_game(squares):
+    """Starts the Tic-Tac-Toe game.
+
+    Uses a while loop to start and continue on the game by: displaying the
+    board with display_board(squares),  alternating between turns for
+    player X and player O, and ending the game when a player wins or a draw happens.
+
+    Args:
+        squares (list): a list that starts with 9 numbers as strings.
+
+    Return: nothing
+    """
     end_game = False
 
     while end_game == False:
@@ -55,6 +70,18 @@ def play_game(squares):
 
 
 def check_win(squares, turn):
+    """Checks if a player has won or if a draw has happened.
+
+    Checks if a player has completed a row, a column, or a diagonal and
+    checks if the board has been filled but nobody has won.
+
+    Args:
+        squares (list): a list of strings of either numbers, Xs or Os.
+        turn (str): a string to tell check_win() who's turn it is.
+
+    Return:
+        Boolean: False to continue game; True to end game. 
+    """
     if turn == 'X':
         if \
         (squares[0] == 'X' and squares[1] == 'X' and squares[2] == 'X') or \
@@ -116,15 +143,23 @@ def check_win(squares, turn):
 
 
 def display_board(squares):
+    """Displays the board.
+
+    Args:
+        squares (list): a list of strings of either numbers, Xs or Os.
+
+    Returns: nothing
+    """
     print('\n'
-    f'{squares[0]} | {squares[1]} | {squares[2]}\n'
-    '---------\n'
-    f'{squares[3]} | {squares[4]} | {squares[5]}\n'
-    '---------\n'
-    f'{squares[6]} | {squares[7]} | {squares[8]}\n')
+    f'     {squares[0]} | {squares[1]} | {squares[2]}\n'
+    '     ---------\n'
+    f'     {squares[3]} | {squares[4]} | {squares[5]}\n'
+    '     ---------\n'
+    f'     {squares[6]} | {squares[7]} | {squares[8]}\n')
 
 
 def create_squares():
+    """Creates a list to display in the board"""
     squares = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     return squares
 
